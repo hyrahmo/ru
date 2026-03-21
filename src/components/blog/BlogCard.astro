@@ -1,0 +1,53 @@
+---
+import { formatDate } from '../../utils/formatDate';
+import { getReadingTime } from '../../utils/readingTime';
+
+interface Props {
+  post: {
+    id: string;
+    data: {
+      title: string;
+      description: string;
+      pubDate: Date;
+      tags: string[];
+      heroImage?: string;
+    };
+    body?: string;
+  };
+}
+
+const { post } = Astro.props;
+const readingTime = post.body ? getReadingTime(post.body) : null;
+---
+
+<a
+  href={`/blog/${post.id}/`}
+  class="group block p-6 rounded-2xl border border-border dark:border-border-dark hover:border-transparent hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] bg-surface dark:bg-surface-dark"
+>
+  {post.data.heroImage && (
+    <img
+      src={post.data.heroImage}
+      alt={post.data.title}
+      class="w-full rounded-xl mb-4 object-cover h-40"
+    />
+  )}
+  <div class="flex items-center gap-3 text-xs text-text-muted dark:text-text-muted-dark mb-2">
+    <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+    {readingTime && <span>{readingTime} чтения</span>}
+  </div>
+  <h3 class="font-semibold text-lg mb-2 group-hover:text-accent transition-colors line-clamp-2">
+    {post.data.title}
+  </h3>
+  <p class="text-sm text-text-muted dark:text-text-muted-dark line-clamp-3">
+    {post.data.description}
+  </p>
+  {post.data.tags.length > 0 && (
+    <div class="flex flex-wrap gap-2 mt-3">
+      {post.data.tags.slice(0, 3).map((tag) => (
+        <span class="px-2 py-0.5 text-[10px] font-medium rounded-full bg-accent/10 text-accent">
+          #{tag}
+        </span>
+      ))}
+    </div>
+  )}
+</a>

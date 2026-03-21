@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Sitemap: https://hyrahmo.ru/sitemap-index.xml
+
+User-agent: Yandex
+Allow: /
+Host: https://hyrahmo.ru

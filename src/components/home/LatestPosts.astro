@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import BlogCard from '../blog/BlogCard.astro';
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const latestPosts = allPosts
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 4);
+---
+
+{latestPosts.length > 0 && (
+  <section class="py-16">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6">
+      <div class="flex items-center justify-between mb-8" data-animate>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Последние записи</h2>
+        <a href="/blog/" class="text-sm text-accent hover:underline underline-offset-4">
+          Все записи &rarr;
+        </a>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2">
+        {latestPosts.map((post, i) => (
+          <div data-animate data-animate-delay={String((i % 4) + 1)}>
+            <BlogCard post={post} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

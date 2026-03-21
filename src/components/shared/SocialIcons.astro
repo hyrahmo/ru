@@ -1,0 +1,24 @@
+---
+import { Icon } from 'astro-icon/components';
+import { socials } from '../../data/social';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class:list={['flex items-center gap-3', className]}>
+  {socials.map((social) => (
+    <a
+      href={social.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={social.name}
+      class="p-2 rounded-lg text-text-muted dark:text-text-muted-dark hover:text-accent hover:bg-border dark:hover:bg-border-dark transition-all duration-200"
+    >
+      <Icon name={social.icon} class="w-5 h-5" />
+    </a>
+  ))}
+</div>

@@ -1,0 +1,115 @@
+---
+import { navigation } from '../../data/navigation';
+import ThemeToggle from './ThemeToggle.astro';
+import SocialIcons from '../shared/SocialIcons.astro';
+---
+
+<header
+  id="header"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+>
+  <div class="mx-auto max-w-5xl px-4 sm:px-6">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a
+        href="/"
+        class="text-xl font-bold tracking-tight hover:text-accent transition-colors"
+      >
+        Хирахмо
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-1">
+        {navigation.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'px-3 py-2 rounded-lg text-sm font-medium transition-colors',
+              Astro.url.pathname === item.href || (item.href !== '/' && Astro.url.pathname.startsWith(item.href))
+                ? 'text-accent bg-accent/10'
+                : 'text-text-muted dark:text-text-muted-dark hover:text-text dark:hover:text-text-dark hover:bg-border dark:hover:bg-border-dark',
+            ]}
+          >
+            {item.label}
+          </a>
+        ))}
+        <div class="ml-2 flex items-center gap-1">
+          <ThemeToggle />
+        </div>
+      </nav>
+
+      <!-- Mobile: theme toggle + burger -->
+      <div class="flex items-center gap-2 md:hidden">
+        <ThemeToggle />
+        <button
+          id="mobile-menu-btn"
+          aria-label="Меню"
+          class="p-2 rounded-lg hover:bg-border dark:hover:bg-border-dark transition-colors cursor-pointer"
+        >
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden pb-4">
+      <nav class="flex flex-col gap-1">
+        {navigation.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'px-3 py-2 rounded-lg text-sm font-medium transition-colors',
+              Astro.url.pathname === item.href || (item.href !== '/' && Astro.url.pathname.startsWith(item.href))
+                ? 'text-accent bg-accent/10'
+                : 'text-text-muted dark:text-text-muted-dark hover:text-text dark:hover:text-text-dark hover:bg-border dark:hover:bg-border-dark',
+            ]}
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+      <div class="mt-3 px-3">
+        <SocialIcons />
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    const header = document.getElementById('header');
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (!header || !menuBtn || !mobileMenu) return;
+
+    // Glassmorphism on scroll
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 20) {
+        header.classList.add('bg-surface/80', 'dark:bg-surface-dark/80', 'backdrop-blur-lg', 'border-b', 'border-border', 'dark:border-border-dark');
+      } else {
+        header.classList.remove('bg-surface/80', 'dark:bg-surface-dark/80', 'backdrop-blur-lg', 'border-b', 'border-border', 'dark:border-border-dark');
+      }
+      lastScroll = scrollY;
+    });
+
+    // Mobile menu toggle
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu on navigation
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  }
+
+  initHeader();
+  document.addEventListener('astro:after-swap', initHeader);
+</script>
