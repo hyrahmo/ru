@@ -2,7 +2,7 @@
 ---
 
 <button
-  id="theme-toggle"
+  data-theme-toggle
   aria-label="Переключить тему"
   class="p-1.5 rounded-md hover:bg-border/50 dark:hover:bg-border-dark/50 transition-colors cursor-pointer text-text-muted dark:text-text-muted-dark hover:text-text dark:hover:text-text-dark"
 >
@@ -23,14 +23,14 @@
 </button>
 
 <script>
-  function initThemeToggle() {
-    const toggle = document.getElementById('theme-toggle');
-    if (!toggle) return;
-    toggle.addEventListener('click', () => {
-      const isDark = document.documentElement.classList.toggle('dark');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  function initThemeToggles() {
+    document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
     });
   }
-  initThemeToggle();
-  document.addEventListener('astro:after-swap', initThemeToggle);
+  initThemeToggles();
+  document.addEventListener('astro:after-swap', initThemeToggles);
 </script>

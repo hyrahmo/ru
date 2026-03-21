@@ -1,5 +1,5 @@
 ---
-title: "Хирахмо.CS2"
+title: "CS2"
 shortTitle: "CS2"
 description: "Counter-Strike 2 — тактика, стратегия и соревновательная игра"
 icon: "🎯"
