@@ -14,27 +14,23 @@ const { title, shortTitle, description, icon, color, slug, status = 'active' } =
 
 <a
   href={`/projects/${slug}/`}
-  class="group block p-6 rounded-2xl border border-border dark:border-border-dark hover:border-transparent hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] bg-surface dark:bg-surface-dark"
+  class="group relative block p-5 rounded-lg border border-border dark:border-border-dark hover:border-text/20 dark:hover:border-text-dark/20 transition-all duration-200 bg-surface dark:bg-surface-dark"
 >
-  <div class="flex items-start gap-4">
+  <div class="flex items-center gap-3 mb-2.5">
     <div
-      class="w-12 h-12 rounded-xl flex items-center justify-center text-xl shrink-0 transition-transform duration-300 group-hover:scale-110"
-      style={`background-color: ${color}20; color: ${color};`}
-    >
-      {icon}
-    </div>
-    <div class="min-w-0">
-      <div class="flex items-center gap-2 mb-1">
-        <h3 class="font-semibold text-lg truncate group-hover:text-accent transition-colors">
-          {shortTitle}
-        </h3>
-        {status === 'planned' && (
-          <span class="px-2 py-0.5 text-[10px] font-medium rounded-full bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400">
-            скоро
-          </span>
-        )}
-      </div>
-      <p class="text-sm text-text-muted dark:text-text-muted-dark line-clamp-2">{description}</p>
-    </div>
+      class="w-2 h-2 rounded-full shrink-0"
+      style={`background-color: ${color};`}
+    ></div>
+    <h3 class="text-sm font-medium group-hover:text-link dark:group-hover:text-link-dark transition-colors">
+      {shortTitle}
+    </h3>
+    {status === 'planned' && (
+      <span class="text-[10px] text-text-muted dark:text-text-muted-dark">
+        скоро
+      </span>
+    )}
   </div>
+  <p class="text-[13px] leading-relaxed text-text-secondary dark:text-text-secondary-dark pl-5">
+    {description}
+  </p>
 </a>

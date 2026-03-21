@@ -8,22 +8,15 @@ const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <PageLayout title="Проекты" description="Все проекты Хирахмо — исследования, обучение, творчество">
-  <div class="mx-auto max-w-5xl px-4 sm:px-6 py-12">
-    <!-- Breadcrumbs -->
-    <nav class="flex items-center gap-2 text-sm text-text-muted dark:text-text-muted-dark mb-8" aria-label="Breadcrumb">
-      <a href="/" class="hover:text-accent transition-colors">Хирахмо</a>
-      <span>/</span>
-      <span class="text-text dark:text-text-dark">Проекты</span>
-    </nav>
-
-    <header class="mb-10" data-animate>
-      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight mb-3">Проекты</h1>
-      <p class="text-lg text-text-muted dark:text-text-muted-dark">
-        Все направления исследований и разработок Хирахмо
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 py-16">
+    <header class="mb-12" data-animate>
+      <h1 class="text-2xl font-semibold tracking-tight mb-2">Проекты</h1>
+      <p class="text-[15px] text-text-secondary dark:text-text-secondary-dark">
+        Все направления исследований и разработок
       </p>
     </header>
 
-    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="grid gap-3 sm:grid-cols-2">
       {sortedProjects.map((project, i) => (
         <div data-animate data-animate-delay={String((i % 6) + 1)}>
           <ProjectCard

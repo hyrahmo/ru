@@ -6,15 +6,15 @@ const projects = await getCollection('projects');
 const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
 ---
 
-<section class="py-16">
-  <div class="mx-auto max-w-5xl px-4 sm:px-6">
-    <div class="flex items-center justify-between mb-8" data-animate>
-      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Проекты</h2>
-      <a href="/projects/" class="text-sm text-accent hover:underline underline-offset-4">
-        Все проекты &rarr;
+<section class="py-20">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6">
+    <div class="flex items-baseline justify-between mb-10" data-animate>
+      <h2 class="text-lg font-semibold tracking-tight">Проекты</h2>
+      <a href="/projects/" class="text-[13px] text-text-muted dark:text-text-muted-dark hover:text-text dark:hover:text-text-dark transition-colors">
+        Все &rarr;
       </a>
     </div>
-    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="grid gap-3 sm:grid-cols-2">
       {sortedProjects.map((project, i) => (
         <div data-animate data-animate-delay={String((i % 6) + 1)}>
           <ProjectCard

@@ -1,23 +1,14 @@
 ---
 import SocialIcons from '../shared/SocialIcons.astro';
-import { SITE } from '../../data/site';
 ---
 
-<footer class="border-t border-border dark:border-border-dark mt-24">
-  <div class="mx-auto max-w-5xl px-4 sm:px-6 py-12">
+<footer class="border-t border-border dark:border-border-dark mt-20">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 py-10">
     <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
-      <div class="flex flex-col items-center sm:items-start gap-2">
-        <a href="/" class="text-lg font-bold tracking-tight hover:text-accent transition-colors">
-          Хирахмо
-        </a>
-        <p class="text-sm text-text-muted dark:text-text-muted-dark">
-          {SITE.description}
-        </p>
-      </div>
+      <p class="text-[13px] text-text-muted dark:text-text-muted-dark">
+        &copy; {new Date().getFullYear()} Хирахмо
+      </p>
       <SocialIcons />
-    </div>
-    <div class="mt-8 pt-6 border-t border-border dark:border-border-dark text-center text-xs text-text-muted dark:text-text-muted-dark">
-      &copy; {new Date().getFullYear()} {SITE.title}. Все права защищены.
     </div>
   </div>
 </footer>

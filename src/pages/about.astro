@@ -4,34 +4,28 @@ import SocialIcons from '../components/shared/SocialIcons.astro';
 ---
 
 <PageLayout title="Обо мне" description="О проекте Хирахмо — кто стоит за этим и зачем всё это">
-  <div class="mx-auto max-w-3xl px-4 sm:px-6 py-12">
-    <nav class="flex items-center gap-2 text-sm text-text-muted dark:text-text-muted-dark mb-8" aria-label="Breadcrumb">
-      <a href="/" class="hover:text-accent transition-colors">Хирахмо</a>
-      <span>/</span>
-      <span class="text-text dark:text-text-dark">Обо мне</span>
-    </nav>
-
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 py-16">
     <article data-animate>
-      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight mb-6">Обо мне</h1>
+      <h1 class="text-2xl font-semibold tracking-tight mb-8">Обо мне</h1>
 
       <div class="prose">
         <p>
-          Привет! Я — <strong>Хирахмо</strong>. Это мой персональный сайт, где я собираю проекты,
+          Привет. Я — Хирахмо. Это мой персональный сайт, где я собираю проекты,
           исследования и заметки по самым разным направлениям: от математики и физики до шахмат,
           искусственного интеллекта и программирования.
         </p>
 
         <p>
           Каждое направление — это отдельный проект со своим фокусом и контентом.
-          Заходи в <a href="/projects/">Проекты</a>, чтобы увидеть всё, или читай
-          <a href="/blog/">Блог</a> для последних записей.
+          Смотри <a href="/projects/">Проекты</a> или читай
+          <a href="/blog/">Блог</a>.
         </p>
 
         <h2>Контакты</h2>
-        <p>Связаться со мной можно через соцсети:</p>
+        <p>Связаться со мной:</p>
       </div>
 
-      <SocialIcons class="mt-4" />
+      <SocialIcons class="mt-6" />
     </article>
   </div>
 </PageLayout>

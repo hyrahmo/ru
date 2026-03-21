@@ -22,25 +22,15 @@ export async function getStaticPaths() {
 const { tag, posts } = Astro.props;
 ---
 
-<PageLayout title={`#${tag}`} description={`Записи с тегом #${tag} — блог Хирахмо`}>
-  <div class="mx-auto max-w-5xl px-4 sm:px-6 py-12">
-    <nav class="flex items-center gap-2 text-sm text-text-muted dark:text-text-muted-dark mb-8" aria-label="Breadcrumb">
-      <a href="/" class="hover:text-accent transition-colors">Хирахмо</a>
-      <span>/</span>
-      <a href="/tags/" class="hover:text-accent transition-colors">Теги</a>
-      <span>/</span>
-      <span class="text-text dark:text-text-dark">#{tag}</span>
-    </nav>
-
-    <h1 class="text-3xl sm:text-4xl font-bold tracking-tight mb-8" data-animate>
-      #{tag}
+<PageLayout title={tag} description={`Записи с тегом ${tag} — блог Хирахмо`}>
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 py-16">
+    <h1 class="text-2xl font-semibold tracking-tight mb-8" data-animate>
+      {tag}
     </h1>
 
-    <div class="grid gap-6 sm:grid-cols-2">
-      {posts.map((post: any, i: number) => (
-        <div data-animate data-animate-delay={String((i % 6) + 1)}>
-          <BlogCard post={post} />
-        </div>
+    <div data-animate>
+      {posts.map((post: any) => (
+        <BlogCard post={post} />
       ))}
     </div>
   </div>

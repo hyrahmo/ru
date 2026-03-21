@@ -18,42 +18,37 @@ const readingTime = getReadingTime(body);
 ---
 
 <PageLayout title={title} description={description} type="article" publishedDate={pubDate} updatedDate={updatedDate}>
-  <article class="mx-auto max-w-3xl px-4 sm:px-6 py-12">
-    <!-- Breadcrumbs -->
-    <nav class="flex items-center gap-2 text-sm text-text-muted dark:text-text-muted-dark mb-8" aria-label="Breadcrumb">
-      <a href="/" class="hover:text-accent transition-colors">Хирахмо</a>
-      <span>/</span>
-      <a href="/blog/" class="hover:text-accent transition-colors">Блог</a>
-      <span>/</span>
-      <span class="text-text dark:text-text-dark truncate">{title}</span>
-    </nav>
-
-    <header class="mb-10" data-animate>
+  <article class="mx-auto max-w-3xl px-4 sm:px-6 py-16">
+    <header class="mb-12" data-animate>
       {heroImage && (
         <img
           src={heroImage}
           alt={title}
-          class="w-full rounded-xl mb-8 object-cover max-h-96"
+          class="w-full rounded-lg mb-10 object-cover max-h-96"
           transition:name={`hero-${Astro.url.pathname}`}
         />
       )}
 
-      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight mb-4">{title}</h1>
-
-      <div class="flex flex-wrap items-center gap-4 text-sm text-text-muted dark:text-text-muted-dark">
+      <div class="flex items-center gap-3 text-[13px] text-text-muted dark:text-text-muted-dark mb-4">
         <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
-        {updatedDate && (
-          <span>Обновлено: {formatDate(updatedDate)}</span>
-        )}
+        <span>&middot;</span>
         <span>{readingTime} чтения</span>
+        {updatedDate && (
+          <>
+            <span>&middot;</span>
+            <span>обновлено {formatDate(updatedDate)}</span>
+          </>
+        )}
       </div>
 
+      <h1 class="text-2xl sm:text-3xl font-semibold tracking-tight leading-tight mb-4">{title}</h1>
+
       {tags.length > 0 && (
-        <div class="flex flex-wrap gap-2 mt-4">
+        <div class="flex flex-wrap gap-2">
           {tags.map((tag) => (
             <a
               href={`/tags/${tag}/`}
-              class="px-3 py-1 text-xs font-medium rounded-full bg-accent/10 text-accent hover:bg-accent/20 transition-colors"
+              class="text-[12px] text-text-muted dark:text-text-muted-dark hover:text-text dark:hover:text-text-dark transition-colors"
             >
               #{tag}
             </a>
@@ -66,13 +61,12 @@ const readingTime = getReadingTime(body);
       <slot />
     </div>
 
-    <!-- Back to blog -->
     <div class="mt-16 pt-8 border-t border-border dark:border-border-dark">
       <a
         href="/blog/"
-        class="inline-flex items-center gap-2 text-sm text-text-muted dark:text-text-muted-dark hover:text-accent transition-colors"
+        class="inline-flex items-center gap-2 text-[13px] text-text-muted dark:text-text-muted-dark hover:text-text dark:hover:text-text-dark transition-colors"
       >
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
         </svg>
         Все записи
