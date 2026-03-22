@@ -1,24 +1,32 @@
 ---
+// 365 experiment: start 2026-02-22
+const startDate = new Date('2026-02-22');
+const today = new Date();
+const diffMs = today.getTime() - startDate.getTime();
+const currentDay = Math.max(1, Math.min(365, Math.floor(diffMs / (1000 * 60 * 60 * 24)) + 1));
 ---
 
 <section class="relative py-28 sm:py-40">
   <div class="mx-auto max-w-3xl px-4 sm:px-6">
     <div data-animate>
-      <p class="text-sm font-medium tracking-widest uppercase text-text-muted dark:text-text-muted-dark mb-6">
-        Персональный сайт
-      </p>
+      <div class="flex items-center gap-3 mb-8">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[12px] font-medium border border-border dark:border-border-dark text-text-secondary dark:text-text-secondary-dark tabular-nums">
+          <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+          День {currentDay} из 365
+        </span>
+      </div>
       <h1 class="text-[clamp(2.75rem,8vw,5.5rem)] font-semibold tracking-[-0.04em] leading-[0.95] mb-8">
         Хирахмо
       </h1>
       <p class="text-lg sm:text-xl text-text-secondary dark:text-text-secondary-dark max-w-xl leading-relaxed mb-12">
-        Проекты, исследования и заметки — от математики и ИИ до шахмат и покера.
+        365 дней под управлением ИИ. Весь процесс на камеру. Без хайпа, без обещаний — только действия и результат.
       </p>
       <div class="flex items-center gap-4">
         <a
-          href="/projects/"
+          href="/experiment/"
           class="inline-flex items-center gap-2.5 px-5 py-2.5 text-sm font-medium rounded-lg bg-accent dark:bg-accent-dark text-white dark:text-black hover:bg-accent-hover dark:hover:bg-accent-hover-dark transition-colors"
         >
-          Проекты
+          Об эксперименте
           <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
           </svg>

@@ -1,0 +1,70 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SocialIcons from '../components/shared/SocialIcons.astro';
+
+const startDate = new Date('2026-02-22');
+const today = new Date();
+const diffMs = today.getTime() - startDate.getTime();
+const currentDay = Math.max(1, Math.min(365, Math.floor(diffMs / (1000 * 60 * 60 * 24)) + 1));
+const progress = Math.round((currentDay / 365) * 100);
+---
+
+<PageLayout title="365 дней под управлением ИИ" description="AI принимает все ключевые решения. Хирахмо исполняет. Весь процесс на камеру.">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 py-16">
+    <article data-animate>
+      <!-- Day counter -->
+      <div class="mb-10">
+        <div class="flex items-baseline gap-3 mb-3">
+          <span class="text-5xl font-semibold tabular-nums tracking-tight">{currentDay}</span>
+          <span class="text-text-muted dark:text-text-muted-dark">/ 365</span>
+        </div>
+        <div class="w-full h-1 rounded-full bg-border dark:bg-border-dark overflow-hidden">
+          <div class="h-full rounded-full bg-text dark:bg-text-dark transition-all" style={`width: ${progress}%`}></div>
+        </div>
+        <p class="text-[13px] text-text-muted dark:text-text-muted-dark mt-2">
+          22 февраля 2026 → 22 февраля 2027
+        </p>
+      </div>
+
+      <h1 class="text-2xl font-semibold tracking-tight mb-8">365 дней под управлением ИИ</h1>
+
+      <div class="prose">
+        <p>
+          Claude (Anthropic) выступает CSO — Chief Strategy Officer — и принимает
+          все ключевые решения на протяжении 365 дней. Хирахмо исполняет. Весь процесс
+          документируется публично.
+        </p>
+
+        <h2>Концепция</h2>
+        <p>
+          «Мозгов нет, но есть идея.» AI управляет стратегией, человек исполняет.
+          Всё на камеру. Без гуру-позы, без обещаний результатов, без инфобизнес-шаблонов.
+          Только действия, ошибки и реальный прогресс.
+        </p>
+
+        <h2>Правила</h2>
+        <ul>
+          <li>Каждый день — минимум одно действие по стратегии AI</li>
+          <li>Всё документируется: видео, посты, блог</li>
+          <li>Ошибки = контент. Честность > красота</li>
+          <li>Публичная подотчётность — на камеру</li>
+          <li>Два языка: русский (~80%) и английский (~20%)</li>
+        </ul>
+
+        <h2>Где смотреть</h2>
+        <p>Эксперимент идёт на всех платформах:</p>
+      </div>
+
+      <SocialIcons class="mt-4 mb-8" />
+
+      <div class="prose">
+        <h2>Нишевые проекты</h2>
+        <p>
+          Под зонтиком Хирахмо планируются нишевые каналы:
+          <a href="/projects/">History, Math, Tech, Economics</a>.
+          Запуск — только после стабилизации основного канала.
+        </p>
+      </div>
+    </article>
+  </div>
+</PageLayout>
